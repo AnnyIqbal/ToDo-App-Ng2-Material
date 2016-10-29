@@ -1,0 +1,31 @@
+<md-card>
+    <md-card-title>
+      <h1>{{title}}</h1>
+    </md-card-title>
+
+  <md-input dividerColor="primary" placeholder="Enter new task" autofocus required [(ngModel)] = "newTask" > </md-input>
+
+<span *ngIf="checker()">
+    <button md-mini-fab class="md-primary" aria-label="Use Android" color="primary" (click)="addTask()">
+        <md-icon color="primary"> add </md-icon>
+    </button>
+</span>
+<span *ngIf="!checker()">
+    <button md-mini-fab class="md-primary" aria-label="Use Android" color="primary" disabled (click)="addTask()">
+        <md-icon color="primary"> add </md-icon>
+    </button>
+</span>
+
+  <ul *ngIf="taskList">
+    <li *ngFor = "let task of taskList; let i=index">
+        <md-card-content> {{task}} 
+            <button md-mini-fab class="md-primary" aria-label="Use Android" color="warn" (click)="dltTask(i)">
+                <md-icon color="warn"> delete </md-icon>
+            </button>
+            <button md-mini-fab class="md-primary" aria-label="Use Android" color="accent" (click)="editTask(task,i)">
+                <md-icon  color="accent"> edit </md-icon>
+            </button>
+        </md-card-content>
+    </li>
+  </ul>
+</md-card>

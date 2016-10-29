@@ -1,0 +1,38 @@
+<div class="card">
+  
+  <img class="card-img-top" src="../Images/todo4.jpg" alt="Card image cap">
+
+  <div class="card-block">
+    <h1 class="card-title font-italic text-xs-center">{{title}}</h1>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Enter new task" autofocus required [(ngModel)] = "newTask" />
+          <span *ngIf="checker()" class="input-group-btn">
+            <button class="btn btn-outline-primary" type="button" (click)="addTask()"> Add Task </button>
+          </span>
+          <span *ngIf="!checker()" class="input-group-btn">
+            <!--<button class="btn btn-outline-primary" type="button" (click)="addTask()" disabled> Add Task </button>-->
+            <md-icon (click)="addTask()" disabled> add </md-icon>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" *ngFor = "let task of taskList; let i=index">
+      <div class="row">
+        <div class="col-sm-8"> {{task}} </div>
+        <div class="col-sm-2">
+          <button class="btn btn-outline-danger" (click)="dltTask(i)"> Delete </button>
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-outline-success" (click)="editTask(task,i)"> Edit </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+</div>
