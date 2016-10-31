@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,13 @@ export class AppComponent {
   index: number;
   editFlag: boolean = false;
   show: boolean = false;
+
+  constructor(private af: AngularFire) {
+    const name$: FirebaseListObservable<any> = af.database.list('anny');
+    name$.subscribe(
+      val => console.log(val)
+    );
+  }
 
   checker() { // chk for empty field and whitespace
     if (this.newTask.length !== 0 && this.newTask !== ' ') {
