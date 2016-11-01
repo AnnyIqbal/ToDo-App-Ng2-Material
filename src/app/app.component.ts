@@ -3,7 +3,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app1.component.html',
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
@@ -14,6 +14,7 @@ export class AppComponent {
   editFlag: boolean = false;
   show: boolean = false;
   list;
+
   constructor(private af: AngularFire) {
     const name: FirebaseListObservable<any> = af.database.list('/list');
     name.subscribe(
@@ -21,11 +22,20 @@ export class AppComponent {
       this.list = val;
       }
     );
-    name.push({
-      name: 'anny',
-      age: 21
-    });
-    //name.remove('anny');
+    // this.newTask = 'helloww';
+    // name.push(this.newTask); // working fine
+      name.push({
+          name: this.newTask,
+          pushedby: 'anny'
+        }); // newTask undefined qk ngmodel hai wo
+
+    // name.push({
+    //   name: 'anny',
+    //   age: '21'
+    // });
+
+   // name.remove('name');
+
   }
 
   checker() { // chk for empty field and whitespace
@@ -33,6 +43,7 @@ export class AppComponent {
       this.addTask();
     }
   }
+
   addTask() {
       if (this.editFlag === true) { // edit Task
         this.taskList.splice(this.index , 1, this.newTask);
