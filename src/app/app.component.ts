@@ -25,7 +25,7 @@ export class AppComponent {
       name: 'anny',
       age: 21
     });
-    name.remove('myname');
+    //name.remove('anny');
   }
 
   checker() { // chk for empty field and whitespace

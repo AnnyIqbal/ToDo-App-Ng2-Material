@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2/index';
 import {firebaseConfig} from '../environments/firebase.config';
-import { KeysPipe } from "./pipe";
+import { KeysPipe } from './pipe';
+import 'hammerjs';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +19,7 @@ import { KeysPipe } from "./pipe";
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
   ],
   providers: [],
   bootstrap: [AppComponent]
