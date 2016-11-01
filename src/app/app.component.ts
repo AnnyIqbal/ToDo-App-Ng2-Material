@@ -3,7 +3,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app2.component.html',
+  templateUrl: './app1.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
@@ -13,12 +13,19 @@ export class AppComponent {
   index: number;
   editFlag: boolean = false;
   show: boolean = false;
-
+  list;
   constructor(private af: AngularFire) {
-    const name$: FirebaseListObservable<any> = af.database.list('anny');
-    name$.subscribe(
-      val => console.log(val)
+    const name: FirebaseListObservable<any> = af.database.list('/list');
+    name.subscribe(
+      val => {console.log(val);
+      this.list = val;
+      }
     );
+    name.push({
+      name: 'anny',
+      age: 21
+    });
+    name.remove('myname');
   }
 
   checker() { // chk for empty field and whitespace

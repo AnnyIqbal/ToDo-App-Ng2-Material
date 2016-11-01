@@ -1,38 +1,38 @@
-<div class="card">
-  
-  <img class="card-img-top" src="../Images/todo4.jpg" alt="Card image cap">
+<md-card>
+    <md-card-title>
+        <h1>{{title}}</h1>
+    </md-card-title>
 
-  <div class="card-block">
-    <h1 class="card-title font-italic text-xs-center">{{title}}</h1>
+    <md-input 
+        *ngIf="show" 
+        dividerColor="primary" 
+        placeholder="Enter new task" 
+        required 
+        autofocus
+        [(ngModel)] = "newTask" 
+        (keyup.enter)="checker()">
+    </md-input>
 
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Enter new task" autofocus required [(ngModel)] = "newTask" />
-          <span *ngIf="checker()" class="input-group-btn">
-            <button class="btn btn-outline-primary" type="button" (click)="addTask()"> Add Task </button>
-          </span>
-          <span *ngIf="!checker()" class="input-group-btn">
-            <!--<button class="btn btn-outline-primary" type="button" (click)="addTask()" disabled> Add Task </button>-->
-            <md-icon (click)="addTask()" disabled> add </md-icon>
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
+    <ul *ngIf="taskList">
+        <li *ngFor = "let task of taskList; let i=index">
+            <md-card-content>
+                <div id="todo"> {{task}} </div>
+                <div id="btnz">
+                    <button md-mini-fab class="md-primary" color="accent" (click)="editTask(task,i)">
+                        <md-icon  color="accent"> edit </md-icon>
+                    </button>
+                    <button md-mini-fab class="md-primary dlt" color="warn" (click)="dltTask(i)">
+                        <md-icon color="warn"> delete </md-icon>
+                    </button>
+                </div>
+            </md-card-content>
+            <hr>
+        </li>
+    </ul>
 
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item" *ngFor = "let task of taskList; let i=index">
-      <div class="row">
-        <div class="col-sm-8"> {{task}} </div>
-        <div class="col-sm-2">
-          <button class="btn btn-outline-danger" (click)="dltTask(i)"> Delete </button>
-        </div>
-        <div class="col-sm-2">
-          <button class="btn btn-outline-success" (click)="editTask(task,i)"> Edit </button>
-        </div>
-      </div>
-    </li>
-  </ul>
-
-</div>
+    <md-card-actions>
+        <button md-fab class="md-primary" color="primary" (click)="show = true">
+            <md-icon color="primary"> add </md-icon>
+        </button>
+    </md-card-actions>
+</md-card>

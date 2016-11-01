@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2/index';
 import {firebaseConfig} from '../environments/firebase.config';
-
+import { KeysPipe } from "./pipe";
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    KeysPipe
   ],
   imports: [
     BrowserModule,
