@@ -16,7 +16,7 @@
     <ul *ngIf="item">
         <li *ngFor = "let task of item | async; let i=index">
             <md-card-content>
-                <div id="todo"> {{task.index | json}} </div>
+                <div id="todo"> {{task.index }} </div>
                 <div id="btnz">
                     <button md-mini-fab class="md-primary" color="accent" (click)="editTask(task.index,task.$key)">
                         <md-icon  color="accent"> edit </md-icon>
@@ -31,7 +31,7 @@
     </ul>
 
     <md-card-actions>
-        <button md-fab class="md-primary" color="primary" (click)="show = true">
+        <button md-fab class="md-primary addd" color="primary" (click)="show = true">
             <md-icon color="primary"> add </md-icon>
         </button>
     </md-card-actions>

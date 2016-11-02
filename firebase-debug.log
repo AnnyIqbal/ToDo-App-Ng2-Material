@@ -1,20 +1,13 @@
 [debug] ----------------------------------------------------------------------
-[debug] Command:      C:\nodejs\node.exe C:\Users\na\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase init
+[debug] Command:      C:\nodejs\node.exe C:\Users\na\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase open
 [debug] CLI Version:  3.0.8
 [debug] Platform:     win32
 [debug] Node Version: v6.6.0
-[debug] Time:         Wed Nov 02 2016 13:10:10 GMT+0500 (Pakistan Standard Time)
+[debug] Time:         Wed Nov 02 2016 13:41:39 GMT+0500 (Pakistan Standard Time)
 [debug] ----------------------------------------------------------------------
 [debug] 
 [debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
-[info] 
-     ######## #### ########  ######## ########     ###     ######  ########
-     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
-     ######    ##  ########  ######   ########  #########  ######  ######
-     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
-     ##       #### ##     ## ######## ########  ##     ##  ######  ########
-
-You're about to initialize a Firebase project in this directory:
-
-  C:\Users\na\Desktop\ToDoApp Angular2 Material
-
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/todoapp-ngmaterial2 
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/todoapp-ngmaterial2/tokens 
+[debug] <<< HTTP RESPONSE 200

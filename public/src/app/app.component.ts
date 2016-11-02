@@ -34,7 +34,7 @@ export class AppComponent {
   addTask(key?) {
       if (this.editFlag === true) { // edit Task
         this.editFlag = false;
-        this.item.update(this.index, {index: this.newTask});
+        this.item.update(this.index, {index: this.newTask}); // update (key, {object});
         this.newTask = '';
         this.show = false;
       }
@@ -50,7 +50,7 @@ export class AppComponent {
 
   editTask(eTask, i) {
     this.editFlag = true;
-    this.index = i;
+    this.index = i; // key moved to var index
     this.newTask = eTask; // loaded task in input field 
     this.show = true;
     this.newTask.autofocus();

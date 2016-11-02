@@ -37,7 +37,11 @@ li {
 }
 md-card-actions {
     margin: 5px auto !important;
+    width: 56px;
+    height: 56px;
+    
 }
+
 @media screen and (max-width: 544px) {
     md-card {
         width: 100%;
