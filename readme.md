@@ -14,7 +14,10 @@ Bootcamp Task1
 * ng2Material
 * AngularFire2
 
-Firebase Url : [Visit My To Do App] (https://todoapp-ngmaterial2.firebaseapp.com/)
+##Firebase Url : 
 
+[Visit My To Do App] (https://todoapp-ngmaterial2.firebaseapp.com/)
 
-Github Url : [Check out the code] (https://github.com/AnnyIqbal/ToDo-App-Ng2-Material)
+##Github Url : 
+
+[Check out the code] (https://github.com/AnnyIqbal/ToDo-App-Ng2-Material)
