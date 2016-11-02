@@ -13,15 +13,15 @@
         (keyup.enter)="checker()">
     </md-input>
 
-    <ul *ngIf="taskList">
-        <li *ngFor = "let task of taskList; let i=index">
+    <ul *ngIf="item">
+        <li *ngFor = "let task of item | async; let i=index">
             <md-card-content>
-                <div id="todo"> {{task}} </div>
+                <div id="todo"> {{task.index | json}} </div>
                 <div id="btnz">
-                    <button md-mini-fab class="md-primary" color="accent" (click)="editTask(task,i)">
+                    <button md-mini-fab class="md-primary" color="accent" (click)="editTask(task.index,task.$key)">
                         <md-icon  color="accent"> edit </md-icon>
                     </button>
-                    <button md-mini-fab class="md-primary dlt" color="warn" (click)="dltTask(i)">
+                    <button md-mini-fab class="md-primary dlt" color="warn" (click)="dltTask(task.$key)">
                         <md-icon color="warn"> delete </md-icon>
                     </button>
                 </div>
