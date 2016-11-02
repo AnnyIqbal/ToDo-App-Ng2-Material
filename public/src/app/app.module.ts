@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { MaterialModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2/index';
+import { SignIn } from './signIn/signin.component';
 import { KeysPipe } from './pipe';
 import 'hammerjs';
 
@@ -20,6 +21,7 @@ import 'hammerjs';
 @NgModule({
   declarations: [
     AppComponent,
+    SignIn,
     KeysPipe
   ],
   imports: [
