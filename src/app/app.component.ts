@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  templateUrl: './app1.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
@@ -13,29 +13,17 @@ export class AppComponent {
   index: number;
   editFlag: boolean = false;
   show: boolean = false;
-  list;
+  item: FirebaseListObservable<any> ;
 
   constructor(private af: AngularFire) {
-    const name: FirebaseListObservable<any> = af.database.list('/list');
-    name.subscribe(
-      val => {console.log(val);
-      this.list = val;
-      }
-    );
-    // this.newTask = 'helloww';
-    // name.push(this.newTask); // working fine
-      name.push({
-          name: this.newTask,
-          pushedby: 'anny'
-        }); // newTask undefined qk ngmodel hai wo
-
-    // name.push({
-    //   name: 'anny',
-    //   age: '21'
-    // });
-
-   // name.remove('name');
-
+    // const name: FirebaseListObservable<any> = af.database.list('/list'); // data as array
+    // const relative = af.database.object('/'); // data as object
+    this.item = af.database.list('/todo');
+    console.log(this.item,"-------------------------------------------")
+    // relative.set({ name: 'new name!'}); // sets the object, removes old value and set to new value
+    // relative.set({id: '1'});
+    // relative.update({name: 'Anny'}); // old value me add this also
+    // relative.remove(); // poora item hi urra dega jo b ho usme
   }
 
   checker() { // chk for empty field and whitespace
@@ -44,17 +32,20 @@ export class AppComponent {
     }
   }
 
-  addTask() {
+  addTask(key?) {
       if (this.editFlag === true) { // edit Task
         this.taskList.splice(this.index , 1, this.newTask);
         localStorage.setItem('list', JSON.stringify(this.taskList));
         this.editFlag = false;
+        this.item.update(key, {index: this.newTask});
         this.newTask = '';
         this.show = false;
       }
       else if (this.editFlag === false) { // add Task
         this.taskList.push(this.newTask);
         localStorage.setItem('list', JSON.stringify(this.taskList));
+        this.item.push({index: this.newTask});
+        // update({index: this.newTask});
         this.newTask = '';
         this.show = false;
       }
@@ -62,6 +53,7 @@ export class AppComponent {
   dltTask(i) {
     this.taskList.splice(i, 1); // i = index of task where dlt button was clicked
     localStorage.setItem('list', JSON.stringify(this.taskList));
+    this.item.remove();
   }
 
   editTask(eTask, i) {
