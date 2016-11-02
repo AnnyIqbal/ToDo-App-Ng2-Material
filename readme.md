@@ -1,5 +1,5 @@
 # To Do App using Angular2
-Its my first complete project using Angular2  
+Bootcamp Task1
 
 ###Functionalities: 
 
@@ -15,4 +15,6 @@ Its my first complete project using Angular2
 * AngularFire2
 
 Firebase Url : [Visit My To Do App] (https://todoapp-ngmaterial2.firebaseapp.com/)
+
+
 Github Url : [Check out the code] (https://github.com/AnnyIqbal/ToDo-App-Ng2-Material)
