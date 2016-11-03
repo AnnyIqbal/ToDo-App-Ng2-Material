@@ -11,18 +11,31 @@ import {FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/form
 })
 export class AppComponent {
   isSignedIn: boolean;
+
   SignInForm: FormGroup;
   email: AbstractControl;
   pcode: AbstractControl;
 
+  SignUpForm: FormGroup;
+  emailid: AbstractControl;
+  pword: AbstractControl;
+
   constructor(private af: AngularFire, fb: FormBuilder){
     this.isSignedIn = false;
+
     this.SignInForm = fb.group({
       'email': ['', Validators.required],
       'pcode': ['', Validators.required] 
     });
      this.email = this.SignInForm.controls['email']; 
      this.pcode = this.SignInForm.controls['pcode'];
+
+     this.SignUpForm = fb.group({
+       'emailid': ['', Validators.required],
+       'pword': ['', Validators.required]
+     });
+     this.emailid = this.SignUpForm.controls['emailid'];
+     this.pword = this.SignUpForm.controls['pword'];
   }
   SignIn(user, code) {
     // this.af.auth.login(); // Google login

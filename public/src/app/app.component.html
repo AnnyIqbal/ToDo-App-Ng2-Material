@@ -18,7 +18,7 @@
             <div *ngIf="!email.valid">Email is invalid</div>
             <div *ngIf="email.hasError('required')">Email is required</div>
         </div> 
-        <div *ngIf="!SignInForm.valid">Form is invalid!</div>
+        <!--<div *ngIf="!SignInForm.valid">Form is invalid!</div>-->
           <br>
         <div class="field" [class.error]="!pcode.valid && pcode.touched">
             <md-input 
@@ -32,19 +32,51 @@
             <div *ngIf="!pcode.valid">Password is invalid</div>
             <div *ngIf="pcode.hasError('required')">Password is required</div>
         </div> 
-        <div *ngIf="!SignInForm.valid">Form is invalid!</div>
         <button md-raised-button color="primary" type="submit" (click)="SignIn(name.value, pass.value)"> 
             Sign In 
         </button>
+        <div *ngIf="!SignInForm.valid">Form is invalid!</div>
     </form>
-    <!--<form method="post" action="Javascript:void(0)" #up='ngForm' (submit)='onSignUp(up.value)'>
+    <form 
+        method="post" 
+        action="Javascript:void(0)" 
+        [formGroup]='SignUpForm'
+        (submit)='onSignUp(SignUpForm.value)'>
+
         <h1>New to To Do App? Sign Up</h1>
-        <md-input dividerColor="accent" placeholder="Email" align="start" type="email" #email> </md-input> <br>
-        <md-input dividerColor="accent" placeholder="Password" align="start" type="password" #code> </md-input> <br><br>
+        <div class="field" [class.error]="!emailid.valid && emailid.touched"> 
+            <md-input
+                dividerColor="accent" 
+                placeholder="Email" 
+                align="start" 
+                type="email" 
+                [formControl]="emailid"
+                #email> 
+            </md-input>
+            <div *ngIf="!emailid.valid"> Invalid Email! </div>
+            <div *ngIf="emailid.hasError('required')"> Email is required! </div>
+        </div>
+        <!--<div *ngIf="!SignUpForm.valid">Form is invalid!</div>-->
+            <br>
+        <div class="field" [class.error]="!pword.valid && pword.touched">
+            <md-input 
+                dividerColor="accent" 
+                placeholder="Password" 
+                align="start" 
+                type="password" 
+                [formControl]="pword"
+                #code> 
+            </md-input>
+            <div *ngIf="!pword.valid"> Invalid Password! </div>
+            <div *ngIf="pword.hasError('required')"> Password is required! </div>
+        </div>
+        <!--<div *ngIf="!SignUpForm.valid">Form is invalid!</div>-->
+              <br><br>
         <button md-raised-button color="accent" type="submit" (click)="createNewUser({email: email.value, password: code.value})"> 
-            Sign Up
+           Sign Up
         </button>
-    </form>-->
+        <div *ngIf="!SignUpForm.valid">Form is invalid!</div>
+    </form>
 </div>
 
 <div *ngIf="isSignedIn">
