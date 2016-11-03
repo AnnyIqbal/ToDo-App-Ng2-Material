@@ -1,15 +1,15 @@
 <div *ngIf="!isSignedIn">
-    <form method="post" action="Javascript:void(0)">
+    <form method="post" action="Javascript:void(0)" #in='ngForm' (submit)="onSignIn(in.value)">
         <h1>Sign In</h1>
         <md-input dividerColor="primary" placeholder="Email" align="start" type="email" #name> </md-input> <br>
         <md-input dividerColor="primary" placeholder="Password" align="start" type="password" #pass> </md-input> <br><br>
-        <button md-raised-button color="primary" (click)="SignIn(name.value, pass.value)"> Sign In </button>
+        <button md-raised-button color="primary" type="submit" (click)="SignIn(name.value, pass.value)"> Sign In </button>
     </form>
-    <form method="post" action="Javascript:void(0)">
+    <form method="post" action="Javascript:void(0)" #up='ngForm' (submit)='onSignUp(up.value)'>
         <h1>New to To Do App? Sign Up</h1>
         <md-input dividerColor="accent" placeholder="Email" align="start" type="email" #email> </md-input> <br>
         <md-input dividerColor="accent" placeholder="Password" align="start" type="password" #code> </md-input> <br><br>
-        <button md-raised-button color="accent" (click)="createNewUser({email: email.value, password: code.value})"> Sign Up </button>
+        <button md-raised-button color="accent" type="submit" (click)="createNewUser({email: email.value, password: code.value})"> Sign Up </button>
     </form>
 </div>
 

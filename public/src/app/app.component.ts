@@ -35,4 +35,10 @@ export class AppComponent {
       { email: email, password: password }
     );
   }
+  onSignIn(signInForm) {
+    console.log("Sign in called : " + signInForm);
+  }
+  onSignUp(signUpForm){
+    console.log("Sign up called : " + signUpForm);
+  }
 }
