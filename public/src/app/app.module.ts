@@ -2,26 +2,33 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AppComponent } from './app.component';
 import { MaterialModule } from '@angular/material';
-import { AngularFireModule } from 'angularfire2/index';
-import { SignIn } from './signIn/signin.component';
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+
+import { AppComponent } from './app.component';
+import { TaskListComponent } from './task-list/task-list.component';
+
 import { KeysPipe } from './pipe';
 import 'hammerjs';
 
-  export const firebaseConfig = {
+const firebaseConfig = {
     apiKey: 'AIzaSyDOm3dwJYOO6ARNd1VhOQfaum31YbjWziE',
     authDomain: 'todoapp-ngmaterial2.firebaseapp.com',
     databaseURL: 'https://todoapp-ngmaterial2.firebaseio.com',
     storageBucket: 'todoapp-ngmaterial2.appspot.com',
     messagingSenderId: '87162505749'
-  };
+};
+
+const firebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Redirect
+};
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignIn,
+    TaskListComponent,
     KeysPipe
   ],
   imports: [
@@ -29,7 +36,7 @@ import 'hammerjs';
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

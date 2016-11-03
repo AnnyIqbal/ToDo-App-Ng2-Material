@@ -1,91 +1,36 @@
-md-card {
-    width: 50%;
-    margin: 5px auto;
+form {
+    width: 300px;
+    margin: 0 auto;
 }
-md-card-title {
-    font-family: "Times New Roman", Times, serif;
+button {
+    float: right;
+}
+section {
+  background: #f7f7f7;
+  border-radius: 3px;
+  text-align: center;
+  margin: 1em;
+  position: relative !important;
+  padding-bottom: 10px;
+}
+  md-button, md-raised-button, md-fab {
+    background: #f7f7f7;
+    border-radius: 3px;
     text-align: center;
-    background-color: rebeccapurple;
-    color: white;
-    font-weight: bolder;
-    padding: 15px 0;
-}
-md-input {
-    width: 50% !important;
-    margin: 20px 2px 20px 23% !important;
-    padding: 5px;
-}
-#todo {
-    width: 50%;
-    font-size: 18px;
-    text-transform: capitalize;
-}
-#btnz {
-    width: 14%;
-}
-md-card-content div {
-    display: inline-flex;
-    vertical-align: middle;
-    margin-left: 10% !important;
-}
-md-card-content button {
-    margin-left: 12% !important;
-}
-li {
-    list-style: none;
-    margin: 3px !important;
-}
-md-card-actions {
-    margin: 5px auto !important;
-    width: 56px;
-    height: 56px;
-    
-}
+    margin: 1em;
+    position: relative !important;
+    padding-bottom: 10px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
 
-@media screen and (max-width: 544px) {
-    md-card {
-        width: 100%;
-        margin: auto;
-    }
-    md-input {
-        width: 100% !important;
-        margin: 0 auto;
-        padding: 2px 2px;
-    }
-    .col-sm-2 button {
-        height: 50%;
-        width: 30%;
-        font-size: 12px;   
-    }
-    .list-group-item .row .col-sm-2 {
-        display: inline;
-    }
+md-content {
+  margin-right: 7px;
 }
-@media screen and (min-width: 544px){
-    md-card {
-        width: 100%;
-        margin: auto;
-    }
-     md-input {
-        margin: 0 auto;
-        padding: 2px 2px;
-    }
- }
-@media screen and (min-width: 768px){ 
-    md-card {
-        width: 80%;
-        margin: 5px auto;
-    }
+.label {
+  position: absolute;
+  bottom: 5px;
+  left: 7px;
+  font-size: 14px;
+  opacity: 0.54;
 }
-@media screen and (min-width: 992px){ 
-   md-card {
-        width: 70%;
-        margin: 5px auto;
-    }
-}
-@media screen and (min-width: 1200px){
-   md-card {
-        width: 60%;
-        margin: 5px auto;
-    }
- }

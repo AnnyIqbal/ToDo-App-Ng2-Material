@@ -1,40 +1,6 @@
-<md-card>
-    <md-card-title>
-        <h1>{{title}}</h1>
-    </md-card-title>
-
-    <md-input #inputTask
-        *ngIf="show" 
-        dividerColor="primary" 
-        placeholder="Enter new task" 
-        required 
-        autofocus
-        [(ngModel)] = "newTask" 
-        (keyup.enter)="checker()">
-    </md-input>
-
-    <ul *ngIf="item">
-        <li *ngFor = "let task of item | async; let i=index">
-            <md-card-content>
-                <div id="todo"> {{task.index }} </div>
-                <div id="btnz">
-                    <button md-mini-fab class="md-primary" color="accent" (click)="editTask(task.index,task.$key)">
-                        <md-icon  color="accent"> edit </md-icon>
-                    </button>
-                    <button md-mini-fab class="md-primary dlt" color="warn" (click)="dltTask(task.$key)">
-                        <md-icon color="warn"> delete </md-icon>
-                    </button>
-                </div>
-            </md-card-content>
-            <hr>
-        </li>
-    </ul>
-
-    <md-card-actions>
-        <button md-fab class="md-primary addd" color="primary" (click)="show = true">
-            <md-icon color="primary"> add </md-icon>
-        </button>
-    </md-card-actions>
-</md-card>
-
-<sign-in></sign-in>
+<form method="post" action="task-list/task-list.component.html">
+    <md-input dividerColor="primary" placeholder="Username" align="start" #name> </md-input> <br>
+    <md-input dividerColor="primary" placeholder="Password" align="start" type="password" #pass> </md-input> <br><br>
+    <button md-raised-button color="primary" (click)="Signin(name.value,pass.value)"> Sign In </button>
+</form>
+<app-task-list *ngIf="isSignedIn"></app-task-list>
