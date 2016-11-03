@@ -1,16 +1,50 @@
 <div *ngIf="!isSignedIn">
-    <form method="post" action="Javascript:void(0)" #in='ngForm' (submit)="onSignIn(in.value)">
+    <form 
+        method="post" 
+        action="Javascript:void(0)" 
+        [formGroup]='SignInForm' 
+        (submit)="onSignIn(SignInForm.value)">
+
         <h1>Sign In</h1>
-        <md-input dividerColor="primary" placeholder="Email" align="start" type="email" #name> </md-input> <br>
-        <md-input dividerColor="primary" placeholder="Password" align="start" type="password" #pass> </md-input> <br><br>
-        <button md-raised-button color="primary" type="submit" (click)="SignIn(name.value, pass.value)"> Sign In </button>
+        <div class="field" [class.error]="!email.valid && email.touched">
+            <md-input 
+                dividerColor="primary" 
+                placeholder="Email" 
+                align="start" 
+                type="email"
+                [formControl]="email" 
+                #name>
+            </md-input>
+            <div *ngIf="!email.valid">Email is invalid</div>
+            <div *ngIf="email.hasError('required')">Email is required</div>
+        </div> 
+        <div *ngIf="!SignInForm.valid">Form is invalid!</div>
+          <br>
+        <div class="field" [class.error]="!pcode.valid && pcode.touched">
+            <md-input 
+                dividerColor="primary" 
+                placeholder="Password" 
+                align="start" 
+                type="password" 
+                [formControl]="pcode"
+                #pass>
+            </md-input>
+            <div *ngIf="!pcode.valid">Password is invalid</div>
+            <div *ngIf="pcode.hasError('required')">Password is required</div>
+        </div> 
+        <div *ngIf="!SignInForm.valid">Form is invalid!</div>
+        <button md-raised-button color="primary" type="submit" (click)="SignIn(name.value, pass.value)"> 
+            Sign In 
+        </button>
     </form>
-    <form method="post" action="Javascript:void(0)" #up='ngForm' (submit)='onSignUp(up.value)'>
+    <!--<form method="post" action="Javascript:void(0)" #up='ngForm' (submit)='onSignUp(up.value)'>
         <h1>New to To Do App? Sign Up</h1>
         <md-input dividerColor="accent" placeholder="Email" align="start" type="email" #email> </md-input> <br>
         <md-input dividerColor="accent" placeholder="Password" align="start" type="password" #code> </md-input> <br><br>
-        <button md-raised-button color="accent" type="submit" (click)="createNewUser({email: email.value, password: code.value})"> Sign Up </button>
-    </form>
+        <button md-raised-button color="accent" type="submit" (click)="createNewUser({email: email.value, password: code.value})"> 
+            Sign Up
+        </button>
+    </form>-->
 </div>
 
 <div *ngIf="isSignedIn">

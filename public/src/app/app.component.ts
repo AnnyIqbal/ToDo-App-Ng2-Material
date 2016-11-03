@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AngularFire } from 'angularfire2';
 import { AngularFireModule, AuthProviders, AuthMethods, FirebaseAuthState } from 'angularfire2';
 import { FirebaseAuth } from 'angularfire2/auth';
+import {FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,18 @@ import { FirebaseAuth } from 'angularfire2/auth';
 })
 export class AppComponent {
   isSignedIn: boolean;
-  constructor(private af: AngularFire){
+  SignInForm: FormGroup;
+  email: AbstractControl;
+  pcode: AbstractControl;
+
+  constructor(private af: AngularFire, fb: FormBuilder){
     this.isSignedIn = false;
+    this.SignInForm = fb.group({
+      'email': ['', Validators.required],
+      'pcode': ['', Validators.required] 
+    });
+     this.email = this.SignInForm.controls['email']; 
+     this.pcode = this.SignInForm.controls['pcode'];
   }
   SignIn(user, code) {
     // this.af.auth.login(); // Google login
@@ -19,10 +30,10 @@ export class AppComponent {
       {email: user , password: code},
       {provider: AuthProviders.Password, method: AuthMethods.Password}
     ).then((res)=>{
-        console.log(res);
+        alert(res);
         this.isSignedIn = true;
     },(err)=>{
-        console.log(err);
+        alert(err);
     });
   }
   SignOut() {
