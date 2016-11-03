@@ -1,4 +1,5 @@
-<div *ngIf="!isSignedIn">
+<div id="div">
+  <div *ngIf="!isSignedIn">
     <form method="post" action="Javascript:void(0)">
         <h1>Sign In</h1>
         <md-input dividerColor="primary" placeholder="Email" align="start" type="email" #name> </md-input> <br>
@@ -11,11 +12,27 @@
         <md-input dividerColor="accent" placeholder="Password" align="start" type="password" #code> </md-input> <br><br>
         <button md-raised-button color="accent" (click)="createNewUser({email: email.value, password: code.value})"> Sign Up </button>
     </form>
-</div>
+  </div>
 
-<div *ngIf="isSignedIn">
+  <div *ngIf="isSignedIn">
     <div id="user">
         <button md-raised-button color="primary" (click)="SignOut()"> Sign Out </button>
     </div>
     <app-task-list></app-task-list>
+  </div>
 </div>
+<style>
+    #div {
+        background-image: url("../app/Images/todo4.jpg");
+        background-repeat: no-repeat;
+        opacity: 0.5;
+        width: 100%;
+        height: 100%;
+    }
+    #div div {
+        width: 50%;
+        height: 70%;
+        float: right;
+        opacity: 1 !important;
+    }
+</style>

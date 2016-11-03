@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFire } from 'angularfire2';
-import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFireModule, AuthProviders, AuthMethods, FirebaseAuthState } from 'angularfire2';
+import { FirebaseAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,8 @@ export class AppComponent {
   constructor(private af: AngularFire){
     this.isSignedIn = false;
   }
-  Signin(user, code) {
-    // this.af.auth.login();
+  SignIn(user, code) {
+    // this.af.auth.login(); // Google login
     this.af.auth.login(
       {email: user , password: code},
       {provider: AuthProviders.Password, method: AuthMethods.Password}
@@ -27,5 +28,11 @@ export class AppComponent {
   SignOut() {
     this.af.auth.logout();
     this.isSignedIn = false;
+  }
+  createNewUser({email,password}) { // sign up
+    this.isSignedIn = true;
+    return this.af.auth.createUser(
+      { email: email, password: password }
+    );
   }
 }
