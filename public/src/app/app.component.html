@@ -1,6 +1,14 @@
-<form method="post" action="task-list/task-list.component.html">
-    <md-input dividerColor="primary" placeholder="Username" align="start" #name> </md-input> <br>
-    <md-input dividerColor="primary" placeholder="Password" align="start" type="password" #pass> </md-input> <br><br>
-    <button md-raised-button color="primary" (click)="Signin(name.value,pass.value)"> Sign In </button>
-</form>
-<app-task-list *ngIf="isSignedIn"></app-task-list>
+<div *ngIf="!isSignedIn">
+    <form method="post" action="Javascript:void(0)">
+        <md-input dividerColor="primary" placeholder="Email" align="start" type="email" #name> </md-input> <br>
+        <md-input dividerColor="primary" placeholder="Password" align="start" type="password" #pass> </md-input> <br><br>
+        <button md-raised-button color="primary" (click)="Signin(name.value,pass.value)"> Sign In </button>
+    </form>
+</div>
+
+<div *ngIf="isSignedIn">
+    <div id="user">
+        <button md-raised-button color="primary" (click)="SignOut()"> Sign Out </button>
+    </div>
+    <app-task-list></app-task-list>
+</div>

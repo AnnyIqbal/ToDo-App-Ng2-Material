@@ -1,9 +1,13 @@
 form {
     width: 300px;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 button {
-    float: right;
+  width: 88px; 
+  margin-left: auto;
+}
+#user button {
+  float: right;
 }
 section {
   background: #f7f7f7;
