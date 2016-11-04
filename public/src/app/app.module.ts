@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { RouterModule, Routes } from '@angular/router';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
@@ -26,13 +27,12 @@ const firebaseAuthConfig = {
   method: AuthMethods.Redirect
 };
 
-// const routes: Routes = [ 
-//   { path: '', redirectTo: 'home', pathMatch: 'full' }, 
-//   { path: 'home', component: HomeComponent },
-//   { path: 'signin', component: SigninComponent }, 
-//   { path: 'signup', component: ContactComponent }, 
-//   { path: 'tasklist', component: TaskListComponent, redirectTo: 'contact' }
-// ];
+const routes: Routes = [ 
+  // { path: '', redirectTo: 'home', pathMatch: 'full' }, 
+  // { path: 'home', component: AppComponent },
+  { path: 'signin', component: SigninComponent}, //, redirectTo: 'home' }, 
+  { path: 'tasklist', component: TaskListComponent }
+];
 
 @NgModule({
   declarations: [
@@ -48,9 +48,9 @@ const firebaseAuthConfig = {
     HttpModule,
     MaterialModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
-    // RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [ {provide: LocationStrategy, useClass: HashLocationStrategy} ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
