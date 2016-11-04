@@ -28,22 +28,16 @@ export class AppComponent {
             alert(err);
         });
       }
-
-  //   onSignIn(valid, value, eml){
-  //     console.log("form submitted!", eml);
-  //     console.log(valid); //true
-  //     console.log(value); //object{eml,pass}
-  // }
  
   SignOut() {
     this.af.auth.logout();
     this.isSignedIn = false;
   }
 
-  createNewUser({email,password}) { // sign up
+  createNewUser(user) { // sign up
     this.isSignedIn = true;
     return this.af.auth.createUser(
-      { email: email, password: password }
+      { email: user.emlid, password: user.pcode }
     );
   }
 }

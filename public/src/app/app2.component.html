@@ -13,7 +13,7 @@
                 name="eml"
                 type="email"
                 #eml="ngModel"
-                [(ngModel)]="email"
+                [(ngModel)]="emailIn"
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
             </md-input>
             <small [hidden]="eml.valid || (eml.pristine && !SignInForm._submitted)" class="alert alert-danger">
@@ -30,7 +30,7 @@
                 name="pass"
                 type="password" 
                 #pass="ngModel"
-                [(ngModel)]="password"
+                [(ngModel)]="passwordIn"
                 minlength="6">
             </md-input>
             <small [hidden]="pass.valid || (pass.pristine && !SignInForm._submitted)" class="alert alert-danger">
@@ -46,46 +46,53 @@
         </form>
     </md-card-content>
   </md-card>
-    <!--<form 
-        method="post" 
-        action="Javascript:void(0)" 
-        [formGroup]='SignUpForm'
-        (submit)='onSignUp(SignUpForm.value)'>
 
-        <h1>New to To Do App? Sign Up</h1>
-        <div class="field" [class.error]="!emailid.valid && emailid.touched"> 
-            <md-input
-                dividerColor="accent" 
+  <md-card>
+    <md-card-title>
+        <h1>Sign Up</h1>
+    </md-card-title>
+    <md-card-content>
+        <form novalidate #SignUpForm="ngForm" (ngSubmit)='createNewUser(SignUpForm.value)'>
+            <md-input required
+                dividerColor="(!emlid.valid || emlid.pristine) ? 'warn':'primary'" 
                 placeholder="Email" 
                 align="start" 
-                type="email" 
-                [formControl]="emailid"
-                #email> 
+                name="emlid"
+                type="email"
+                #emlid="ngModel"
+                [(ngModel)]="emailUp"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
             </md-input>
-            <div *ngIf="!emailid.valid"> Invalid Email! </div>
-            <div *ngIf="emailid.hasError('required')"> Email is required! </div>
-        </div>
-        <div *ngIf="!SignUpForm.valid">Form is invalid!</div>
-            <br>
-        <div class="field" [class.error]="!pword.valid && pword.touched">
-            <md-input 
-                dividerColor="accent" 
+            <small [hidden]="emlid.valid || (emlid.pristine && !SignUpForm._submitted)" class="alert alert-danger">
+                Invalid Email! 
+            </small>
+			<small [hidden]="!emlid.errors?.required || (emlid.pristine && !SignUpForm._submitted)" class="alert alert-danger">
+                Email is required!
+            </small>
+                <br>
+            <md-input required
+                dividerColor="(!pcode.valid || pcode.pristine) ? 'warn':'primary'" 
                 placeholder="Password" 
                 align="start" 
+                name="pcode"
                 type="password" 
-                [formControl]="pword"
-                #code> 
+                #pcode="ngModel"
+                [(ngModel)]="passwordUp"
+                minlength="6">
             </md-input>
-            <div *ngIf="!pword.valid"> Invalid Password! </div>
-            <div *ngIf="pword.hasError('required')"> Password is required! </div>
-        </div>
-        <div *ngIf="!SignUpForm.valid">Form is invalid!</div>
-              <br><br>
-        <button md-raised-button color="accent" type="submit" (click)="createNewUser({email: email.value, password: code.value})"> 
-           Sign Up
-        </button>
-        <div *ngIf="!SignUpForm.valid">Form is invalid!</div>
-    </form>-->
+            <small [hidden]="pcode.valid || (pcode.pristine && !SignUpForm._submitted)" class="alert alert-danger">
+                Password must be 6 characters long!
+            </small>
+            <small [hidden]="!pcode.errors?.required || (pcode.pristine && !SignUpForm._submitted)" class="alert alert-danger">
+                Password is required!
+            </small>
+                <br><br>
+            <button md-raised-button color="primary" type="submit" [disabled]="!emlid.valid || !pcode.valid"> 
+                Sign Up
+            </button>
+        </form>
+    </md-card-content>
+  </md-card>
 </div>
 
 <div *ngIf="isSignedIn">
