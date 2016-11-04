@@ -4,8 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { SigninComponent } from './signin/signin.component';
 import { TaskListComponent } from './task-list/task-list.component';
 
 import { KeysPipe } from './pipe';
@@ -24,10 +26,18 @@ const firebaseAuthConfig = {
   method: AuthMethods.Redirect
 };
 
+// const routes: Routes = [ 
+//   { path: '', redirectTo: 'home', pathMatch: 'full' }, 
+//   { path: 'home', component: HomeComponent },
+//   { path: 'signin', component: SigninComponent }, 
+//   { path: 'signup', component: ContactComponent }, 
+//   { path: 'tasklist', component: TaskListComponent, redirectTo: 'contact' }
+// ];
 
 @NgModule({
   declarations: [
     AppComponent,
+    SigninComponent,
     TaskListComponent,
     KeysPipe
   ],
@@ -37,7 +47,8 @@ const firebaseAuthConfig = {
     ReactiveFormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
+    // RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
