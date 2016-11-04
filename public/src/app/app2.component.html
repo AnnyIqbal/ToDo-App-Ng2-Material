@@ -4,31 +4,43 @@
         <h1>Sign In</h1>
     </md-card-title>
     <md-card-content>
-        <form novalidate #SignInForm="ngForm" (ngSubmit)="onSubmit(SignInForm.valid, SignInForm.value)">
+        <form novalidate #SignInForm="ngForm" (ngSubmit)="onSubmit(SignInForm.valid, SignInForm.value, eml)">
             <md-input required
                 dividerColor="(!eml.valid || eml.pristine) ? 'warn':'primary'" 
                 placeholder="Email" 
                 align="start" 
-                name="email"
+                name="eml"
                 type="email"
                 #eml="ngModel"
-                [(ngModel)]="email">
+                [(ngModel)]="email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
             </md-input>
-			<small [hidden]="eml.valid || (eml.pristine && !SignInForm._submitted)" class="alert alert-danger"></small>
+            <small [hidden]="eml.valid || (eml.pristine && !SignInForm._submitted)" class="alert alert-danger">
+                Invalid Email! 
+            </small>
+			<small [hidden]="!eml.errors?.required || (eml.pristine && !SignInForm._submitted)" class="alert alert-danger">
+                Email is required!
+            </small>
             <br>
             <md-input required
                 dividerColor="(!pass.valid || pass.pristine) ? 'warn':'primary'" 
                 placeholder="Password" 
                 align="start" 
-                name="password"
+                name="pass"
                 type="password" 
                 #pass="ngModel"
-                [(ngModel)]="password" >
+                [(ngModel)]="password"
+                minlength="6">
             </md-input>
-            <small [hidden]="pass.valid || (pass.pristine && !SignInForm._submitted)" class="alert alert-danger"></small>
+            <small [hidden]="pass.valid || (pass.pristine && !SignInForm._submitted)" class="alert alert-danger">
+                Password must be 6 characters long!
+            </small>
+            <small [hidden]="!pass.errors?.required || (pass.pristine && !SignInForm._submitted)" class="alert alert-danger">
+                Password is required!
+            </small>
             <br>
             <button md-raised-button color="primary" type="submit" [disabled]="!eml.valid || !pass.valid"> 
-                Sign In 
+                Sign In
             </button>
         </form>
     </md-card-content>
