@@ -1,43 +1,39 @@
 <div *ngIf="!isSignedIn">
-    <form 
-        method="post" 
-        action="Javascript:void(0)" 
-        [formGroup]='SignInForm' 
-        (submit)="onSignIn(SignInForm.value)">
-
+  <md-card>
+    <md-card-title>
         <h1>Sign In</h1>
-        <div class="field" [class.error]="!email.valid && email.touched">
-            <md-input 
-                dividerColor="primary" 
+    </md-card-title>
+    <md-card-content>
+        <form novalidate #SignInForm="ngForm" (ngSubmit)="onSubmit(SignInForm.valid, SignInForm.value)">
+            <md-input required
+                dividerColor="(!eml.valid || eml.pristine) ? 'warn':'primary'" 
                 placeholder="Email" 
                 align="start" 
+                name="email"
                 type="email"
-                [formControl]="email" 
-                #name>
+                #eml="ngModel"
+                [(ngModel)]="email">
             </md-input>
-            <div *ngIf="!email.valid">Email is invalid</div>
-            <div *ngIf="email.hasError('required')">Email is required</div>
-        </div> 
-        <!--<div *ngIf="!SignInForm.valid">Form is invalid!</div>-->
-          <br>
-        <div class="field" [class.error]="!pcode.valid && pcode.touched">
-            <md-input 
-                dividerColor="primary" 
+			<small [hidden]="eml.valid || (eml.pristine && !SignInForm._submitted)" class="alert alert-danger"></small>
+            <br>
+            <md-input required
+                dividerColor="(!pass.valid || pass.pristine) ? 'warn':'primary'" 
                 placeholder="Password" 
                 align="start" 
+                name="password"
                 type="password" 
-                [formControl]="pcode"
-                #pass>
+                #pass="ngModel"
+                [(ngModel)]="password" >
             </md-input>
-            <div *ngIf="!pcode.valid">Password is invalid</div>
-            <div *ngIf="pcode.hasError('required')">Password is required</div>
-        </div> 
-        <button md-raised-button color="primary" type="submit" (click)="SignIn(name.value, pass.value)"> 
-            Sign In 
-        </button>
-        <div *ngIf="!SignInForm.valid">Form is invalid!</div>
-    </form>
-    <form 
+            <small [hidden]="pass.valid || (pass.pristine && !SignInForm._submitted)" class="alert alert-danger"></small>
+            <br>
+            <button md-raised-button color="primary" type="submit" [disabled]="!eml.valid || !pass.valid"> 
+                Sign In 
+            </button>
+        </form>
+    </md-card-content>
+  </md-card>
+    <!--<form 
         method="post" 
         action="Javascript:void(0)" 
         [formGroup]='SignUpForm'
@@ -76,12 +72,12 @@
            Sign Up
         </button>
         <div *ngIf="!SignUpForm.valid">Form is invalid!</div>
-    </form>
+    </form>-->
 </div>
 
-<div *ngIf="isSignedIn">
+<!--<div *ngIf="isSignedIn">
     <div id="user">
         <button md-raised-button color="primary" (click)="SignOut()"> Sign Out </button>
     </div>
     <app-task-list></app-task-list>
-</div>
+</div>-->

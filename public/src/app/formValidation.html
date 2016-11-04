@@ -1,0 +1,19 @@
+<!--Sigin Component START-->
+<div class="container">
+	<md-card style="text-align: center;" class="demo-card demo-basic">
+		<md-card-content>
+			<form novalidate #f="ngForm" (ngSubmit)="onSubmit(f.valid, f.value)">
+				<md-input #email="ngModel" name="email" [(ngModel)]="eml" placeholder="Email" required [dividerColor]="(!email.valid || email.pristine) ? 'warn':'primary'"></md-input>
+				<br>
+				<small [hidden]="email.valid || (email.pristine && !f._submitted)" class="alert alert-danger"></small>
+				<md-input style="padding-top:20px" type="password" #password="ngModel" name="password" [(ngModel)]="pwd" placeholder="Password"
+					required [dividerColor]="(!password.valid || password.pristine) ? 'warn':'primary'"></md-input>
+				<br>
+				<small [hidden]="password.valid || (password.pristine && !f._submitted)" class="alert alert-danger">     </small>
+				<button class="md-button" md-button>FORGOT PASSWORD</button>
+				<button class="md-raised-button" [disabled]="!email.valid || ! password.valid" type="submit" md-raised-button> SignIn </button>
+			</form>
+		</md-card-content>
+	</md-card>
+</div>
+<!--Sigin Component END-->
