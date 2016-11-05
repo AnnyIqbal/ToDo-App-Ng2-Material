@@ -5,7 +5,7 @@ import { FirebaseAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './routing.html', //'./app2.component.html',
+  templateUrl: './routing.html', 
   styleUrls: ['./app.component.css']
 })
 

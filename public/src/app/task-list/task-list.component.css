@@ -10,6 +10,9 @@ md-card-title {
     font-weight: bolder;
     padding: 15px 0;
 }
+#user button {
+  float: right;
+}
 md-input {
     width: 50% !important;
     margin: 20px 2px 20px 23% !important;

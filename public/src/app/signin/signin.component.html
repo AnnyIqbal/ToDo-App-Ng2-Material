@@ -6,14 +6,14 @@
         <form novalidate #SignInForm="ngForm" (ngSubmit)="onSignIn(SignInForm.value)">
         <!--(ngSubmit)="onSignIn(SignInForm.valid, SignInForm.value, eml)">-->
             <md-input required
-                dividerColor="!eml.valid ? 'warn':'primary'" 
                 placeholder="Email" 
                 align="start" 
                 name="eml"
                 type="email"
                 #eml="ngModel"
                 [(ngModel)]="emailIn"
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                [dividerColor]="(!eml.valid || eml.pristine) ? 'warn':'primary'">
             </md-input>
             <small [hidden]="eml.valid || (eml.pristine && !SignInForm._submitted)" class="alert alert-danger">
                 Invalid Email! 
@@ -23,7 +23,7 @@
             </small>
             <br>
             <md-input required
-                dividerColor="(!pass.valid || pass.pristine) ? 'warn':'primary'" 
+                [dividerColor]="(!pass.valid || pass.pristine) ? 'warn':'primary'" 
                 placeholder="Password" 
                 align="start" 
                 name="pass"
@@ -44,4 +44,11 @@
             </button>
         </form>
     </md-card-content>
+    <md-card-actions>
+        New to the To Do App?
+        <button md-raised-button color="accent" type="submit" (click)="Navigate2Signup()"> 
+            Sign Up
+        </button>| 
+        Forgot Password!
+    </md-card-actions>
   </md-card>

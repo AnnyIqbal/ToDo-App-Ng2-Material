@@ -2,13 +2,12 @@ form {
     width: 300px;
     margin: 10px auto;
 }
+
 button {
   width: 88px; 
   margin-left: auto;
 }
-#user button {
-  float: right;
-}
+
 section {
   background: #f7f7f7;
   border-radius: 3px;

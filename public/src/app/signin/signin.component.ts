@@ -3,6 +3,7 @@ import { AngularFire } from 'angularfire2';
 import { AngularFireModule, AuthProviders, AuthMethods, FirebaseAuthState } from 'angularfire2';
 import { FirebaseAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -23,5 +24,9 @@ export class SigninComponent {
         },(err)=>{
             alert(err);
         });
+    }
+
+    Navigate2Signup() {
+        this.route.navigate(['signup']); //navigate to signup page
     }
 }

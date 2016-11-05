@@ -29,10 +29,10 @@ const firebaseAuthConfig = {
 };
 
 const routes: Routes = [ 
-  // { path: '', redirectTo: 'home', pathMatch: 'full' }, 
-  // { path: 'home', component: AppComponent },
-  { path: 'signin', component: SigninComponent}, //, redirectTo: 'home' },
+  { path: '', redirectTo: 'signin', pathMatch: 'full' }, 
+  { path: 'signin', component: SigninComponent}, 
   { path: 'signup', component: SignupComponent }, 
+  // { path: 'signup/tasklist', redirectTo: 'tasklist' },
   { path: 'tasklist', component: TaskListComponent,
    canActivate: [
     AuthGuard
