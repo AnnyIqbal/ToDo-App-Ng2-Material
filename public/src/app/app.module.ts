@@ -5,12 +5,12 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { RouterModule, Routes } from '@angular/router';
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
 import { TaskListComponent } from './task-list/task-list.component';
-
+import { AuthGuard } from './providers/authGuard';
 import { KeysPipe } from './pipe';
 import 'hammerjs';
 
@@ -31,7 +31,10 @@ const routes: Routes = [
   // { path: '', redirectTo: 'home', pathMatch: 'full' }, 
   // { path: 'home', component: AppComponent },
   { path: 'signin', component: SigninComponent}, //, redirectTo: 'home' }, 
-  { path: 'tasklist', component: TaskListComponent }
+  { path: 'tasklist', component: TaskListComponent,
+   canActivate: [
+    AuthGuard
+  ] }
 ];
 
 @NgModule({
@@ -50,7 +53,10 @@ const routes: Routes = [
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     RouterModule.forRoot(routes)
   ],
-  providers: [ {provide: LocationStrategy, useClass: HashLocationStrategy} ],
+  providers: [ 
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

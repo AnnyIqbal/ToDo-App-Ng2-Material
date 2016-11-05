@@ -16,23 +16,6 @@ export class AppComponent {
   constructor(private af: AngularFire){
     this.isSignedIn = false;
   }
-    // onSignIn(value) {
-    //     // this.af.auth.login(); // Google login
-    //     this.af.auth.login(
-    //       {email: value.eml , password: value.pass}, //xyz@todo.com, xyzxyz
-    //       {provider: AuthProviders.Password, method: AuthMethods.Password}
-    //     ).then((res)=>{
-    //         alert("Sign In Successful!");
-    //         this.isSignedIn = true;
-    //     },(err)=>{
-    //         alert(err);
-    //     });
-    // }
- 
-  SignOut() {
-    this.af.auth.logout();
-    this.isSignedIn = false;
-  }
 
   createNewUser(user) { // sign up
     this.isSignedIn = true;

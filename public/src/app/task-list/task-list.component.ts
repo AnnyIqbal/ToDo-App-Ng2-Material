@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
@@ -14,7 +15,7 @@ export class TaskListComponent {
   show: boolean = false;
   item: FirebaseListObservable<any> ;
 
-  constructor(private af: AngularFire) {
+  constructor(private af: AngularFire, private route: Router) {
     this.item = af.database.list('/todo');
     // const name: FirebaseListObservable<any> = af.database.list('/list'); // data as array
     // const relative = af.database.object('/'); // data as object
@@ -24,7 +25,11 @@ export class TaskListComponent {
     // relative.update({name: 'Anny'}); // old value me add this also
     // relative.remove(); // poora item hi urra dega jo b ho usme
   }
-
+  SignOut() {
+    this.af.auth.logout();
+    this.route.navigate(['signin']); //navigate to todoapp
+  }
+  
   checker() { // chk for empty field and whitespace
     if (this.newTask.length !== 0 && this.newTask !== ' ') {
       this.addTask();

@@ -9,11 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent {
-    isSignedIn: boolean;
 
-  constructor(private af: AngularFire, private route: Router){
-    this.isSignedIn = false;
-  }
+  constructor(private af: AngularFire, private route: Router){}
 
   onSignIn(value) {
         // this.af.auth.login(); // Google login
@@ -22,7 +19,6 @@ export class SigninComponent {
           {provider: AuthProviders.Password, method: AuthMethods.Password}
         ).then((res)=>{
             alert("Sign In Successful!");
-            this.isSignedIn = true;
             this.route.navigate(['tasklist']); //navigate to todoapp
         },(err)=>{
             alert(err);
