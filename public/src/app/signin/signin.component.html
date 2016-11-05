@@ -6,7 +6,7 @@
         <form novalidate #SignInForm="ngForm" (ngSubmit)="onSignIn(SignInForm.value)">
         <!--(ngSubmit)="onSignIn(SignInForm.valid, SignInForm.value, eml)">-->
             <md-input required
-                dividerColor="(!eml.valid || eml.pristine) ? 'warn':'primary'" 
+                dividerColor="!eml.valid ? 'warn':'primary'" 
                 placeholder="Email" 
                 align="start" 
                 name="eml"

@@ -9,9 +9,10 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { AuthGuard } from './providers/authGuard';
-import { KeysPipe } from './pipe';
+import { KeysPipe } from './pipes/pipe';
 import 'hammerjs';
 
 const firebaseConfig = {
@@ -30,7 +31,8 @@ const firebaseAuthConfig = {
 const routes: Routes = [ 
   // { path: '', redirectTo: 'home', pathMatch: 'full' }, 
   // { path: 'home', component: AppComponent },
-  { path: 'signin', component: SigninComponent}, //, redirectTo: 'home' }, 
+  { path: 'signin', component: SigninComponent}, //, redirectTo: 'home' },
+  { path: 'signup', component: SignupComponent }, 
   { path: 'tasklist', component: TaskListComponent,
    canActivate: [
     AuthGuard
@@ -41,6 +43,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     SigninComponent,
+    SignupComponent,
     TaskListComponent,
     KeysPipe
   ],
