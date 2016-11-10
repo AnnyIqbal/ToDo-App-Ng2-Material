@@ -29,7 +29,7 @@ export class TaskListComponent {
     this.af.auth.logout();
     this.route.navigate(['signin']); //navigate to todoapp
   }
-  
+
   checker() { // chk for empty field and whitespace
     if (this.newTask.length !== 0 && this.newTask !== ' ') {
       this.addTask();
@@ -44,6 +44,9 @@ export class TaskListComponent {
         this.show = false;
       }
       else if (this.editFlag === false) { // add Task
+        setTimeout(function(){
+          this.newTask.focus();
+          }, 100);
         this.item.push({index: this.newTask});
         this.newTask = '';
         this.show = false;
@@ -60,5 +63,11 @@ export class TaskListComponent {
     setTimeout(function(){
       inputTask.focus();
     }, 100);
+  }
+  focusedDisplay(inputTask) {
+    this.show = true;
+    setTimeout(function(){
+      inputTask.focus();
+      }, 10);
   }
 }

@@ -11,7 +11,6 @@
         dividerColor="primary" 
         placeholder="Enter new task" 
         required 
-        autofocus
         [(ngModel)] = "newTask" 
         (keyup.enter)="checker()">
     </md-input>
@@ -21,7 +20,7 @@
             <md-card-content>
                 <div id="todo"> {{task.index }} </div>
                 <div id="btnz">
-                    <button md-mini-fab class="md-primary" color="accent" (click)="editTask(task.index,task.$key, inputTask)">
+                    <button md-mini-fab class="md-primary" color="accent" (click)="editTask(task.index, task.$key, inputTask)">
                         <md-icon  color="accent"> edit </md-icon>
                     </button>
                     <button md-mini-fab class="md-primary dlt" color="warn" (click)="dltTask(task.$key)">
@@ -34,7 +33,7 @@
     </ul>
 
     <md-card-actions>
-        <button md-fab class="md-primary addd" color="primary" (click)="show = true">
+        <button md-fab class="md-primary addd" color="primary" (click)="focusedDisplay(inputTask)">
             <md-icon color="primary"> add </md-icon>
         </button>
     </md-card-actions>
