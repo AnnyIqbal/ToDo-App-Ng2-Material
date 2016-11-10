@@ -4,7 +4,7 @@
     </md-card-title>
 
     <md-input #inputTask
-        *ngIf="show" 
+        [hidden]="!show" 
         dividerColor="primary" 
         placeholder="Enter new task" 
         required 
@@ -18,7 +18,7 @@
             <md-card-content>
                 <div id="todo"> {{task.index }} </div>
                 <div id="btnz">
-                    <button md-mini-fab class="md-primary" color="accent" (click)="editTask(task.index,task.$key)">
+                    <button md-mini-fab class="md-primary" color="accent" (click)="editTask(task.index,task.$key, inputTask)">
                         <md-icon  color="accent"> edit </md-icon>
                     </button>
                     <button md-mini-fab class="md-primary dlt" color="warn" (click)="dltTask(task.$key)">
