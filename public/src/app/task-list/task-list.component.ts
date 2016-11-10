@@ -52,12 +52,13 @@ export class TaskListComponent {
   dltTask(key) {
     this.item.remove(key);
   }
-
-  editTask(eTask, i) {
+  editTask(eTask, i, inputTask) {
     this.editFlag = true;
     this.index = i; // key moved to var index
     this.newTask = eTask; // loaded task in input field 
     this.show = true;
-    this.newTask.autofocus();
+    setTimeout(function(){
+      inputTask.focus();
+    }, 100);
   }
 }

@@ -92,3 +92,4 @@ md-card-actions {
         margin: 5px auto;
     }
  }
+[hidden] { display: none !important;}
