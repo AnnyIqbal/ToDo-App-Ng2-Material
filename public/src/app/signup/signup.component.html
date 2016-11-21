@@ -1,6 +1,6 @@
   <md-card>
     <md-card-title>
-        <h1>Sign Up</h1>
+        <h2>Sign Up</h2>
     </md-card-title>
     <md-card-content>
         <form novalidate #SignUpForm="ngForm" (ngSubmit)='SignUp(SignUpForm.value)'>
@@ -58,6 +58,7 @@
             <button md-raised-button color="primary" type="submit" [disabled]="!emlid.valid || !pcode.valid"> 
                 Create Account
             </button>
+            <br>
         </form>
     </md-card-content>
   </md-card>

@@ -1,6 +1,6 @@
 <md-card>
     <md-card-title>
-        <h1>Sign In</h1>
+        <h2>Sign In</h2>
     </md-card-title>
     <md-card-content>
         <form novalidate #SignInForm="ngForm" (ngSubmit)="onSignIn(SignInForm.value)">
@@ -42,7 +42,7 @@
             <button md-raised-button color="primary" type="submit" [disabled]="!eml.valid || !pass.valid" > 
                 Sign In
             </button>
-            <br>
+            <br><br>
         </form>
     </md-card-content>
     <!--<md-card-actions>

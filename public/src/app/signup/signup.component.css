@@ -1,8 +1,18 @@
+md-card {
+  width: 90%;
+  margin: 0 auto;
+  background-color: rgb(183,232,133);
+}
 form {
     width: 300px;
     margin: 10px auto;
 }
-
+h2 {
+  /*color: rgb(183,232,133);*/
+}
+/*md-input {
+  width: 120%;
+}*/
 button {
   width: 130px; 
   margin-left: auto;
