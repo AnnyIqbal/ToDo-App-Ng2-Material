@@ -36,7 +36,8 @@ const routes: Routes = [
   { path: 'tasklist', component: TaskListComponent,
    canActivate: [
     AuthGuard
-  ] }
+  ] },
+  { path: '**', redirectTo: 'home'}
 ];
 
 @NgModule({
