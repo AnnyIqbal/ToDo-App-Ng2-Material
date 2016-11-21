@@ -25,8 +25,4 @@ export class SigninComponent {
             alert(err);
         });
     }
-
-    Navigate2Signup() {
-        this.route.navigate(['signup']); //navigate to signup page
-    }
 }

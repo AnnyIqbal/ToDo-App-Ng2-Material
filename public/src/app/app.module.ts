@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { TaskListComponent } from './task-list/task-list.component';
+import { HomeComponent } from './home/home.component';
+
 import { AuthGuard } from './providers/authGuard';
 import { KeysPipe } from './pipes/pipe';
 import 'hammerjs';
@@ -29,10 +31,8 @@ const firebaseAuthConfig = {
 };
 
 const routes: Routes = [ 
-  { path: '', redirectTo: 'signin', pathMatch: 'full' }, 
-  { path: 'signin', component: SigninComponent}, 
-  { path: 'signup', component: SignupComponent }, 
-  // { path: 'signup/tasklist', redirectTo: 'tasklist' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent},  
   { path: 'tasklist', component: TaskListComponent,
    canActivate: [
     AuthGuard
@@ -45,6 +45,7 @@ const routes: Routes = [
     SigninComponent,
     SignupComponent,
     TaskListComponent,
+    HomeComponent,
     KeysPipe
   ],
   imports: [

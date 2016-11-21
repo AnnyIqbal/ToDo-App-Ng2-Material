@@ -14,7 +14,7 @@ export class TaskListComponent {
   editFlag: boolean = false;
   show: boolean = false;
   item: FirebaseListObservable<any> ;
-
+  
   constructor(private af: AngularFire, private route: Router) {
     this.item = af.database.list('/todo');
     // const name: FirebaseListObservable<any> = af.database.list('/list'); // data as array
@@ -27,7 +27,8 @@ export class TaskListComponent {
   }
   SignOut() {
     this.af.auth.logout();
-    this.route.navigate(['signin']); //navigate to todoapp
+    this.route.navigate(['home']); //navigate back to home page
+    alert("Please Sign In to continue...");
   }
 
   checker() { // chk for empty field and whitespace
