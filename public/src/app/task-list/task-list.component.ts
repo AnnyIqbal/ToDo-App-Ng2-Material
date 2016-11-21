@@ -61,11 +61,11 @@ export class TaskListComponent {
     this.index = i; // key moved to var index
     this.newTask = eTask; // loaded task in input field 
     this.show = true;
-    setTimeout(function(){
+    setTimeout(function(){ // set focus with some time delay
       inputTask.focus();
     }, 100);
   }
-  focusedDisplay(inputTask) {
+  focusedDisplay(inputTask) { // set focus on input field
     this.show = true;
     setTimeout(function(){
       inputTask.focus();
