@@ -4,11 +4,10 @@
             <img src="../assets/Images/todo.png" alt="todo" />
         </div>
         <div id="forms" class="col-sm-6">
-            <br>
             <nav>
                 <ul> 
-                    <li><a [routerLink]="['signin']">Already a Member</a></li> 
-                    <li><a [routerLink]="['signup']">New to ToDo App</a></li> 
+                    <li><a [routerLink]="['signin']">Log In</a></li> 
+                    <li><a [routerLink]="['signup']">Join Us</a></li> 
                 </ul> 
             </nav>
         
@@ -16,3 +15,24 @@
         </div>
     </div>
 </div> 
+
+<md-tab-group [selectedIndex]="1">
+  <md-tab>
+    <template md-tab-label> Sign In </template>
+    <template md-tab-content>
+      <br>
+      <app-signin></app-signin>
+      <br>
+    </template>
+  </md-tab>
+  <md-tab>
+    <template md-tab-label>
+      <md-icon>thumb_down</md-icon> Sign Up
+    </template>
+    <template md-tab-content>
+      <br>
+      <app-signup></app-signup>
+      <br>
+    </template>
+  </md-tab>
+</md-tab-group>
