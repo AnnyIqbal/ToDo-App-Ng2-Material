@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="../assets/Images/todo.png" alt="todo" />
+        </div>
+        <div id="forms" class="col-sm-6">
+            <nav>
+                <ul> 
+                    <li><a [routerLink]="['signin']">Already a Member</a></li> 
+                    <li><a [routerLink]="['signup']">New to ToDo App</a></li> 
+                </ul> 
+            </nav>
+        
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div> 

@@ -38,19 +38,16 @@
             <small [hidden]="!pass.errors?.required || (pass.pristine && !SignInForm._submitted)" class="alert alert-danger">
                 Password is required!
             </small>
-            <br>
+            <br><br><br>
             <button md-raised-button color="primary" type="submit" [disabled]="!eml.valid || !pass.valid" > 
                 Sign In
             </button>
+            <br>
         </form>
     </md-card-content>
-    <md-card-actions>
+    <!--<md-card-actions>
         <button id="forgot" md-raised-button color="warn" type="submit">
             Forgot Password
         </button> 
-       | New to the To Do App?
-        <button md-raised-button color="accent" type="submit" (click)="Navigate2Signup()"> 
-            Sign Up
-        </button>
-    </md-card-actions>
+    </md-card-actions>-->
   </md-card>
