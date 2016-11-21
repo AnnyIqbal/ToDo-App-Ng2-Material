@@ -3,6 +3,8 @@ Bootcamp Task1
 
 ###Functionalities: 
 
+* Sign In / Sign Out
+* Create Account
 * Add Task
 * Delete Task 
 * Edit Task
@@ -13,6 +15,7 @@ Bootcamp Task1
 * Typescript2
 * ng2Material
 * AngularFire2
+* Auth Guard
 
 ##Firebase Url : 
 
