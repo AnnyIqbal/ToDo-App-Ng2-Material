@@ -10,11 +10,11 @@ div .row {
   height: 70vh;
   margin: 15vh auto;
   background-color: orchid;
-  opacity: 0.9;
 }
 div .col-sm-6 {
   height: 70vh;
 }
+/*not working*/
 .label {
   font-weight: bold !important;
   font-size: 18px !important;
