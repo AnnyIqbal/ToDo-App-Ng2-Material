@@ -6,13 +6,19 @@ import { MaterialModule } from '@angular/material';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { RouterModule, Routes } from '@angular/router';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { NgReduxModule } from 'ng2-redux';
 
+// StoreModule
+import { StoreModule } from './store';
+
+// Components
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { HomeComponent } from './home/home.component';
 
+// Pipes n Providers
 import { AuthGuard } from './providers/authGuard';
 import { KeysPipe } from './pipes/pipe';
 import 'hammerjs';
@@ -54,6 +60,8 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    NgReduxModule,
+    StoreModule,
     MaterialModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     RouterModule.forRoot(routes)

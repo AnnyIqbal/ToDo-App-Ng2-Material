@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Router } from '@angular/router';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { Observable } from 'rxjs';
+import { MyActions } from './../store/actions';
+import { select } from 'ng2-redux';
 
 @Component({
   selector: 'app-task-list',
@@ -15,7 +18,12 @@ export class TaskListComponent {
   show: boolean = false;
   item: FirebaseListObservable<any> ;
   
-  constructor(private af: AngularFire, private route: Router) {
+    @select(['state','Tasks','todo']) state$: Observable<any>; // @select(['property of obj :1st arg is obj 2nd arg is its property'])
+  constructor(
+    private af: AngularFire, 
+    private route: Router,
+    private a: MyActions
+    ) {
     this.item = af.database.list('/todo');
     // const name: FirebaseListObservable<any> = af.database.list('/list'); // data as array
     // const relative = af.database.object('/'); // data as object
@@ -24,6 +32,9 @@ export class TaskListComponent {
     // relative.set({id: '1'});
     // relative.update({name: 'Anny'}); // old value me add this also
     // relative.remove(); // poora item hi urra dega jo b ho usme
+
+this.state$.subscribe(x => console.log('state: '+ x));
+
   }
   SignOut() {
     this.af.auth.logout();
@@ -43,6 +54,8 @@ export class TaskListComponent {
         this.item.update(this.index, {index: this.newTask}); // update (key, {object});
         this.newTask = '';
         this.show = false;
+// edit action dispatched
+        this.a.editTask(this.newTask);
       }
       else if (this.editFlag === false) { // add Task
         setTimeout(function(){
@@ -51,10 +64,14 @@ export class TaskListComponent {
         this.item.push({index: this.newTask});
         this.newTask = '';
         this.show = false;
+// add action dispatched
+        this.a.addTask(this.newTask);
       }
 }
   dltTask(key) {
     this.item.remove(key);
+// action dispatched
+    this.a.dltTask(this.newTask);
   }
   editTask(eTask, i, inputTask) {
     this.editFlag = true;
