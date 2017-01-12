@@ -1,10 +1,10 @@
-import { AbcPage } from './app.po';
+import { ToDoAppPage } from './app.po';
 
-describe('abc App', function() {
-  let page: AbcPage;
+describe('to-do-app App', function() {
+  let page: ToDoAppPage;
 
   beforeEach(() => {
-    page = new AbcPage();
+    page = new ToDoAppPage();
   });
 
   it('should display message saying app works', () => {

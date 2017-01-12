@@ -1,6 +1,6 @@
-import { browser, element, by } from 'protractor/globals';
+import { browser, element, by } from 'protractor';
 
-export class AbcPage {
+export class ToDoAppPage {
   navigateTo() {
     return browser.get('/');
   }

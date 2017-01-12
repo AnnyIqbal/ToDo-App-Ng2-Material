@@ -23,10 +23,10 @@
                 <div id="todo"> {{task.index }} </div>
                 <div id="btnz">
                     <button md-mini-fab class="md-primary" color="accent" (click)="editTask(task.index, task.$key, inputTask)">
-                        <md-icon  color="accent"> edit </md-icon>
+                        <i class="material-icons" color="accent">mode_edit</i>
                     </button>
                     <button md-mini-fab class="md-primary dlt" color="warn" (click)="dltTask(task.$key)">
-                        <md-icon color="warn"> delete </md-icon>
+                        <i class="material-icons" color="warn">delete</i>
                     </button>
                 </div>
             </md-card-content>
@@ -36,7 +36,7 @@
 
     <md-card-actions>
         <button md-fab class="md-primary addd" color="primary" (click)="focusedDisplay(inputTask)">
-            <md-icon color="primary"> add </md-icon>
+            <i class="material-icons" color="primary">add</i>
         </button>
     </md-card-actions>
 </md-card>
