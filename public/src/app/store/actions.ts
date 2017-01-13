@@ -15,15 +15,15 @@ export class MyActions{
     // action controllers
 
     addTask(task) {
-        this.ngRedux.dispatch({ type: MyActions.ADD_TASK });
+        this.ngRedux.dispatch({ type: MyActions.ADD_TASK, payload: task });
     }
 
-    dltTask(task) {
+    dltTask() {
         this.ngRedux.dispatch({ type: MyActions.DLT_TASK });
     }
 
     editTask(task) {
-        this.ngRedux.dispatch({ type: MyActions.EDIT_TASK });
+        this.ngRedux.dispatch({ type: MyActions.EDIT_TASK, payload: task });
     }
 
 }

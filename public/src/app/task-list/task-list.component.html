@@ -13,8 +13,7 @@
         dividerColor="primary" 
         placeholder="Enter new task" 
         required 
-        [(ngModel)] = "newTask" 
-        (keyup.enter)="checker()">
+        (keyup.enter)="checker(inputTask)">
     </md-input>
 
     <ul *ngIf="item">
@@ -40,3 +39,7 @@
         </button>
     </md-card-actions>
 </md-card>
+<div>
+    <h3> State Management </h3>
+    <p> Current state: {{ state$ | async | json }} </p>
+</div>

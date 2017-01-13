@@ -12,13 +12,12 @@ import { select } from 'ng2-redux';
 })
 export class TaskListComponent {
   title = 'TO DO APP';
-  newTask;
   index: string;
   editFlag: boolean = false;
   show: boolean = false;
   item: FirebaseListObservable<any> ;
   
-    @select(['state','Tasks','todo']) state$: Observable<any>; // @select(['property of obj :1st arg is obj 2nd arg is its property'])
+    @select(['Tasks', 'todo']) state$: Observable<any>; // @select(['property of obj :1st arg is obj 2nd arg is its property'])
   constructor(
     private af: AngularFire, 
     private route: Router,
@@ -32,9 +31,6 @@ export class TaskListComponent {
     // relative.set({id: '1'});
     // relative.update({name: 'Anny'}); // old value me add this also
     // relative.remove(); // poora item hi urra dega jo b ho usme
-
-this.state$.subscribe(x => console.log('state: '+ x));
-
   }
   SignOut() {
     this.af.auth.logout();
@@ -42,50 +38,54 @@ this.state$.subscribe(x => console.log('state: '+ x));
     alert("Please Sign In to continue...");
   }
 
-  checker() { // chk for empty field and whitespace
-    if (this.newTask.length !== 0 && this.newTask !== ' ') {
-      this.addTask();
-    }
+  checker(inputValue) { // chk for empty field and whitespace
+    if (inputValue.length !== 0 && inputValue !== ' ') {
+      this.addTask(inputValue);
+    }    
   }
 
-  addTask(key?) {
+  addTask(inputField, key?) {
       if (this.editFlag === true) { // edit Task
         this.editFlag = false;
-        this.item.update(this.index, {index: this.newTask}); // update (key, {object});
-        this.newTask = '';
+        this.item.update(this.index, {index: inputField.value}); // update (key, {object});
+
+        // 'edit' action dispatched from redux
+        this.a.editTask(inputField.value);
+
+        inputField.value = '';
         this.show = false;
-// edit action dispatched
-        this.a.editTask(this.newTask);
       }
       else if (this.editFlag === false) { // add Task
         setTimeout(function(){
-          this.newTask.focus();
+          inputField.focus();
           }, 100);
-        this.item.push({index: this.newTask});
-        this.newTask = '';
+        this.item.push({index: inputField.value}); //add item
+        
+        // 'add action' dispatched from redux
+        this.a.addTask(inputField.value);
+
+        inputField.value = '';
         this.show = false;
-// add action dispatched
-        this.a.addTask(this.newTask);
       }
 }
   dltTask(key) {
     this.item.remove(key);
-// action dispatched
-    this.a.dltTask(this.newTask);
+    // 'dlt' action dispatched from redux
+    this.a.dltTask();
   }
-  editTask(eTask, i, inputTask) {
+  editTask(eTask, i, inputField) {
     this.editFlag = true;
     this.index = i; // key moved to var index
-    this.newTask = eTask; // loaded task in input field 
+    inputField.value = eTask; // loaded task in input field 
     this.show = true;
     setTimeout(function(){ // set focus with some time delay
-      inputTask.focus();
+      inputField.focus();
     }, 100);
   }
-  focusedDisplay(inputTask) { // set focus on input field
+  focusedDisplay(inputField) { // set focus on input field
     this.show = true;
     setTimeout(function(){
-      inputTask.focus();
+      inputField.focus();
       }, 10);
   }
 }

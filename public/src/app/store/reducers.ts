@@ -1,18 +1,29 @@
 export const initialState = { 
     Tasks: {
-        index: 0,
-        todo: 'Hello World'
+        counter: 0,
+        todo: ''
     }
  };
 
  export const ToDoReducer = function(state = initialState, action : { type: any, payload?: any }): {} {
-     switch(action.type){
-         case 'ADD_TASK': 
-            return Object.assign({}, state, { index: state.Tasks.index + 1 });
-         case 'DLT_TASK': 
-            return Object.assign({}, state, { index: state.Tasks.index - 1 });
-         case 'EDIT_TASK': 
-            return Object.assign({}, state, { index: state.Tasks.index }); 
+   let newstate ;
+     switch(action.type) {
+         case 'ADD_TASK': {
+            newstate = state;
+            newstate.Tasks.counter= state.Tasks.counter + 1;
+            newstate.Tasks.todo = action.payload;         
+            return Object.assign({}, state, newstate);
+         }
+         case 'DLT_TASK': {
+            newstate = state;
+            newstate.Tasks.counter= state.Tasks.counter - 1;
+            return Object.assign({}, state, newstate);
+         }
+         case 'EDIT_TASK': {
+            newstate = state;
+            newstate.Tasks.todo = action.payload;         
+            return Object.assign({}, state, newstate); 
+        }
          default:
             return state;
      }
