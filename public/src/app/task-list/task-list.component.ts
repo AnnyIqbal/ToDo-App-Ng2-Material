@@ -16,10 +16,10 @@ export class TaskListComponent {
   editFlag: boolean = false;
   show: boolean = false;
   item: FirebaseListObservable<any> ;
-  
+
     @select(['Tasks', 'todo']) state$: Observable<any>; // @select(['property of obj :1st arg is obj 2nd arg is its property'])
   constructor(
-    private af: AngularFire, 
+    private af: AngularFire,
     private route: Router,
     private a: MyActions
     ) {
@@ -34,14 +34,14 @@ export class TaskListComponent {
   }
   SignOut() {
     this.af.auth.logout();
-    this.route.navigate(['home']); //navigate back to home page
-    alert("Please Sign In to continue...");
+    this.route.navigate(['home']); // navigate back to home page
+    alert('Please Sign In to continue...');
   }
 
   checker(inputValue) { // chk for empty field and whitespace
     if (inputValue.length !== 0 && inputValue !== ' ') {
       this.addTask(inputValue);
-    }    
+    }
   }
 
   addTask(inputField, key?) {
@@ -60,7 +60,7 @@ export class TaskListComponent {
           inputField.focus();
           }, 100);
         this.item.push({index: inputField.value}); //add item
-        
+
         // 'add action' dispatched from redux
         this.a.addTask(inputField.value);
 
