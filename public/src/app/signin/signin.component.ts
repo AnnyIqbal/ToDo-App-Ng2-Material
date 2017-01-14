@@ -1,3 +1,6 @@
+import { Observable } from 'rxjs';
+import { select } from 'ng2-redux';
+import { MyActions } from './../store/actions';
 import { Component, OnInit } from '@angular/core';
 import { AngularFire } from 'angularfire2';
 import { AngularFireModule, AuthProviders, AuthMethods, FirebaseAuthState } from 'angularfire2';
@@ -11,17 +14,27 @@ import { Router } from '@angular/router';
 })
 export class SigninComponent {
 
-  constructor(private af: AngularFire, private route: Router){}
+@select(['User', 'status'])
+user$: Observable<any>; // gets User State of the app
+
+  constructor(
+      private af: AngularFire,
+      private route: Router,
+      private a: MyActions
+    ) {}
 
   onSignIn(value) {
+    // 'signout' action dispatched from redux
+    this.a.signIn();
+
         // this.af.auth.login(); // Google login
         this.af.auth.login(
-          {email: value.eml , password: value.pass}, //xyz@todo.com, xyzxyz
+          {email: value.eml , password: value.pass}, // xyz@todo.com, xyzxyz
           {provider: AuthProviders.Password, method: AuthMethods.Password}
-        ).then((res)=>{
-            alert("Sign In Successful!");
-            this.route.navigate(['tasklist']); //navigate to todoapp
-        },(err)=>{
+        ).then((res) => {
+            alert('Sign In Successful!');
+            this.route.navigate(['tasklist']); // navigate to todoapp
+        }, (err) => {
             alert(err);
         });
     }

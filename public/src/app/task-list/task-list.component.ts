@@ -17,8 +17,12 @@ export class TaskListComponent {
   show: boolean = false;
   item: FirebaseListObservable<any> ;
 
-    @select(['currentState']) state$: Observable<any>; // gets Task State of the app
-    @select(['User', 'status']) user$: Observable<any>; // gets User State of the app 
+    @select(['currentState'])
+    state$: Observable<any>; // gets Task State of the app
+
+    @select(['User', 'status'])
+    user$: Observable<any>; // gets User State of the app
+
   constructor(
     private af: AngularFire,
     private route: Router,
@@ -34,6 +38,9 @@ export class TaskListComponent {
     // relative.remove(); // poora item hi urra dega jo b ho usme
   }
   SignOut() {
+    // 'signout' action dispatched from redux
+    this.a.signOut();
+
     this.af.auth.logout();
     this.route.navigate(['home']); // navigate back to home page
     alert('Please Sign In to continue...');

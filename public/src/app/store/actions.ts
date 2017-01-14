@@ -29,15 +29,15 @@ export class MyActions{
         this.ngRedux.dispatch({ type: MyActions.EDIT_TASK, payload: task });
     }
 
-    signIn(status) {
-        this.ngRedux.dispatch({ type: MyActions.SIGN_IN, payload: status });
+    signIn() {
+        this.ngRedux.dispatch({ type: MyActions.SIGN_IN, payload: 'loggedIn' });
     }
 
     signUp(status) {
         this.ngRedux.dispatch({ type: MyActions.SIGN_UP, payload: status });
     }
 
-    signOut(status) {
-        this.ngRedux.dispatch({ type: MyActions.SIGN_OUT, payload: status });
+    signOut() {
+        this.ngRedux.dispatch({ type: MyActions.SIGN_OUT, payload: 'loggedout' });
     }
 }
