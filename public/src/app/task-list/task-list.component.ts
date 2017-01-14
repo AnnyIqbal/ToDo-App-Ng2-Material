@@ -17,7 +17,8 @@ export class TaskListComponent {
   show: boolean = false;
   item: FirebaseListObservable<any> ;
 
-    @select(['Tasks', 'todo']) state$: Observable<any>; // @select(['property of obj :1st arg is obj 2nd arg is its property'])
+    @select(['currentState']) state$: Observable<any>; // gets Task State of the app
+    @select(['User', 'status']) user$: Observable<any>; // gets User State of the app 
   constructor(
     private af: AngularFire,
     private route: Router,
@@ -68,10 +69,10 @@ export class TaskListComponent {
         this.show = false;
       }
 }
-  dltTask(key) {
+  dltTask(key, eTask) {
     this.item.remove(key);
     // 'dlt' action dispatched from redux
-    this.a.dltTask();
+    this.a.dltTask(eTask);
   }
   editTask(eTask, i, inputField) {
     this.editFlag = true;

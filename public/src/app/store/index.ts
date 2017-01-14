@@ -6,7 +6,7 @@ import { MyActions } from './actions';
 export { MyActions } from './actions';
 
 // Reducer
-import { ToDoReducer, initialState } from './reducers';
+import { TaskReducer, initialTaskState, UserReducer, initialUserState } from './reducers';
 
 @NgModule({
     providers: [ MyActions ]
@@ -17,8 +17,8 @@ export class StoreModule {
         private devTool: DevToolsExtension
     ) {
         this.ngRedux.configureStore(
-            ToDoReducer,                // ToDoReducer
-            initialState,               // initial state
+            TaskReducer,                // ToDoReducer
+            initialTaskState,               // initial state
             null,                       // middleware
             [devTool.isEnabled() ? devTool.enhancer() : f => f] // Enhancers
         );

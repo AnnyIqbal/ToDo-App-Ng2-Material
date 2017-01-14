@@ -24,7 +24,7 @@
                     <button md-mini-fab class="md-primary" color="accent" (click)="editTask(task.index, task.$key, inputTask)">
                         <i class="material-icons" color="accent">mode_edit</i>
                     </button>
-                    <button md-mini-fab class="md-primary dlt" color="warn" (click)="dltTask(task.$key)">
+                    <button md-mini-fab class="md-primary dlt" color="warn" (click)="dltTask(task.$key, task.index)">
                         <i class="material-icons" color="warn">delete</i>
                     </button>
                 </div>
@@ -40,6 +40,7 @@
     </md-card-actions>
 </md-card>
 <div>
-    <h3> State Management </h3>
-    <p> Current state: {{ state$ | async | json }} </p>
+    <h1> State Management </h1>
+    <h3> Current State of Task: {{ state$ | async | json }} </h3>
+    <h3> Current State of User: {{ user$ | async | json }} </h3>
 </div>
