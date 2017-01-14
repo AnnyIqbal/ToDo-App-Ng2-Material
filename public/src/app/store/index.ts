@@ -1,4 +1,5 @@
 import { NgRedux, select, DevToolsExtension } from 'ng2-redux';
+import { combineReducers } from 'redux';
 import { NgModule } from '@angular/core';
 
 // Actions
@@ -8,8 +9,17 @@ export { MyActions } from './actions';
 // Reducer
 import { TaskReducer, initialTaskState, UserReducer, initialUserState } from './reducers';
 
+export interface IAppState {
+    TaskReducer: Object;
+    UserReducer: Object;
+}
+export const AppReducer = combineReducers<IAppState>({
+    TaskReducer,
+    UserReducer
+});
+
 @NgModule({
-    providers: [ MyActions ]
+    providers: [ MyActions ] // actions
 })
 export class StoreModule {
     constructor(
@@ -17,8 +27,8 @@ export class StoreModule {
         private devTool: DevToolsExtension
     ) {
         this.ngRedux.configureStore(
-            TaskReducer,                // ToDoReducer
-            initialTaskState,               // initial state
+            AppReducer,                 // ToDoReducer
+            {},                         // initial state
             null,                       // middleware
             [devTool.isEnabled() ? devTool.enhancer() : f => f] // Enhancers
         );
