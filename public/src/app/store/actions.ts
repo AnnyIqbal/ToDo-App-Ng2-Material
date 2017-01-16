@@ -29,8 +29,8 @@ export class MyActions{
         this.ngRedux.dispatch({ type: MyActions.EDIT_TASK, payload: task });
     }
 
-    signIn() {
-        this.ngRedux.dispatch({ type: MyActions.SIGN_IN, payload: 'loggedIn' });
+    signIn(email) {
+        this.ngRedux.dispatch({ type: MyActions.SIGN_IN, payload: email });
     }
 
     signUp(status) {

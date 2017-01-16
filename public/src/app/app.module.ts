@@ -39,10 +39,10 @@ const firebaseAuthConfig = {
 const routes: Routes = [ 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},  
-  { path: 'tasklist', component: TaskListComponent},
-  // , canActivate: [
-  //   AuthGuard
-  // ] },
+  { path: 'tasklist', component: TaskListComponent
+  , canActivate: [
+    AuthGuard
+  ] },
   { path: '**', redirectTo: 'home'}
 ];
 

@@ -25,7 +25,7 @@ user$: Observable<any>; // gets User State of the app
 
   onSignIn(value) {
     // 'signout' action dispatched from redux
-    this.a.signIn();
+    this.a.signIn(value.eml);
 
         // this.af.auth.login(); // Google login
         this.af.auth.login(

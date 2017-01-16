@@ -1,13 +1,12 @@
 export const initialTaskState = {
     Tasks: {
-        index: 0,
         counter: 0,
         todo: ''
     }
  };
 
  export const TaskReducer = function(state = initialTaskState, action: { type: any, payload?: any }): {} {
-   let newstate ;
+   let newstate;
      switch (action.type) {
          case 'ADD_TASK': {
             newstate = state;
@@ -42,18 +41,34 @@ export const initialTaskState = {
 export const initialUserState = {
     User: {
         name: '',
+        email: '',
         status: ''
     }
 };
 
 export const UserReducer = function(state = initialUserState, action: { type: string, payload?: any}) {
+  let userStatus;
     switch (action.type) {
-        case 'SIGN_IN':
-            return Object.assign({}, state, { status: action.payload });
-        case 'SIGN_UP':
-            return Object.assign({}, state, { status: action.payload });
-        case 'SIGN_OUT':
-            return Object.assign({}, state, { status: action.payload });
+        case 'SIGN_IN': {
+            userStatus = state;
+            state.User.email = action.payload;
+            state.User.status = 'Logged In';
+            return Object.assign({}, state, userStatus);
+        }
+        case 'SIGN_UP': {
+            userStatus = state;
+            console.log(action.payload);
+            state.User.name = action.payload.uname;
+            state.User.email = action.payload.emlid;
+            state.User.status = 'Signed Up';
+            return Object.assign({}, state, userStatus);
+        }
+        case 'SIGN_OUT': {
+            userStatus = state;
+            state.User.email = '';
+            state.User.status = action.payload;
+            return Object.assign({}, state, userStatus);
+        }
         default:
             return state;
     }

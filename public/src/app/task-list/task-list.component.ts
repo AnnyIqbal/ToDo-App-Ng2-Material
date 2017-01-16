@@ -17,10 +17,11 @@ export class TaskListComponent {
   show: boolean = false;
   item: FirebaseListObservable<any> ;
 
-    @select(['currentState'])
+//combineReducers() agr use kia ho to @select(['REDUCER_NAME','USKI KEY'])
+    @select(['TaskReducer','currentState'])
     state$: Observable<any>; // gets Task State of the app
 
-    @select(['User', 'status'])
+    @select(['UserReducer', 'User', 'status']) 
     user$: Observable<any>; // gets User State of the app
 
   constructor(
