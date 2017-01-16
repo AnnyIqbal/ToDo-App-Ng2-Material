@@ -16,10 +16,11 @@ Bootcamp Task1
 * ng2Material
 * AngularFire2
 * Auth Guard
+* Redux <State Management for Tasks and Users>
 
 ##Firebase Url : 
 
-[Visit My To Do App] (https://todoapp-ngmaterial2.firebaseapp.com/)
+[Visit My ToDoApp] (https://todoapp-ngmaterial2.firebaseapp.com/)
 
 ##Github Url : 
 
